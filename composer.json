@@ -1,0 +1,17 @@
+{
+    "name": "pc/hourly-work-test",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohammad Ravand",
+            "email": "m.ravand@clickhub.ir"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
