@@ -2,9 +2,10 @@
 
 return [
     "mysql"=>[
-        "username"=> "mohammad",
-        "password"=>"password",
-        "database"=> "test_database",
-        "port"=> "3306"
+        "username"=> $_ENV["username"],
+        "password"=>$_ENV["password"],
+        "database"=> $_ENV["database"],
+        "host"=> $_ENV["host"],
+        "port"=> $_ENV["port"]
     ]
 ];

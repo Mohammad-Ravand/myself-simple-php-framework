@@ -4,12 +4,12 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Config\Config;
 use App\Helpers\Response;
-use App\Models\Hotel;
+use App\Models\HotelTranslate;
 
-class   HotelController extends Controller{
-    private Hotel $hotel;
+class   HotelTranslateController extends Controller{
+    private HotelTranslate $hotel_translate;
     public function __construct( private Config $config){
-        $this->hotel = new Hotel();
+        $this->hotel_translate = new HotelTranslate();
     }
 
     public function index(){
@@ -21,7 +21,7 @@ class   HotelController extends Controller{
         $language_id =(int)($_GET['language_id'] ?? null);
         $hotel_id = (int)($_GET['hotel_id'] ?? null);
 
-        $data = $this->hotel->getHotes($language_id,$hotel_id);
+        $data = $this->hotel_translate->getHotes($language_id,$hotel_id);
 
         
         $response_data = [

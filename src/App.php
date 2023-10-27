@@ -4,20 +4,28 @@ use Dotenv\Dotenv;
 use App\Config\Config;
 use App\Routes\Routes;
 use App\Providers\Provider;
+use App\Application\ConfigTrait;
 
 class App{
-    private Config $config;
+    private static $instance;
+
+    public static Config $config;
     private Provider $provider;
 
     private array $routes;
-    public function __construct(){
+    private function __construct(){
         $this->loadEnv();
         $this->loadConfig();
         $this->loadProviders();
         $this->loadRoutes();
 
-        // $route->call();
-        
+    }
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 
     private function loadEnv(){
@@ -26,23 +34,22 @@ class App{
     }
 
     private function loadConfig(){
-        $this->config = new Config();
+        self::$config = new Config();
     }
 
     private function loadRoutes(){
         require_once('./src/Routes/Routes.php');
     }
-    private function loadModels(){
-
-    }
 
     private function loadProviders(){
-       $this->provider = new Provider($this->config);
+       $this->provider = new Provider(self::$config);
     }
 
     public function loadControllers(){
 
     }
+
+
    
 
     

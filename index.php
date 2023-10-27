@@ -2,7 +2,7 @@
 namespace App;
 require_once('./vendor/autoload.php');
 
-$app = new App();
+$app = App::getInstance();
 
 
 
